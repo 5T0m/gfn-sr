@@ -6,6 +6,7 @@ from actions import Action
 from policy import RNNForwardPolicy, CanonicalBackwardPolicy
 from gflownet import GFlowNet, trajectory_balance_loss
 from tqdm import tqdm
+import numpy as np
 
 
 def train_plot(errs, flows, avg_mses, top_mses):
