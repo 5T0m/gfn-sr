@@ -47,7 +47,7 @@ def train_gfn_sr(batch_size, num_epochs, show_plot=False, use_gpu=True, new=Fals
     if new == True:
         y = (np.cos(X[:, 0]) + X[:, 0]**3 - 5*X[:, 0]**2)*0.1*X[:, 1] + np.sin(X[:, 0] - X[:, 1]**2)
     else: 
-        y = X[:, 0] ** 2 - 0.5 * X[:, 1]
+       X_train[:, 0]**2 - X_train[:, 1]**2 + X_train[:, 1] - 1
     print("y: ", y)
     action = Action(X.shape[1])
     env = SRTree(X, y, action_space=action, max_depth=3, loss="dynamic")
