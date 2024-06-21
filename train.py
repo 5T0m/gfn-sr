@@ -43,7 +43,8 @@ def train_gfn_sr(batch_size, num_epochs, show_plot=False, use_gpu=True):
     print("training started with device", device)
     X = torch.empty(200, 2).uniform_(0, 1) * 5
     # y = X[:, 0] + 3
-    y = X[:, 0] ** 2 - 0.5 * X[:, 1]
+    y = (np.cos(X[:, 0]) + X[:, 0]**3 - 5*X[:, 0]**2)*0.1*X[:, 1] + np.sin(X[:, 0] - X[:, 1]**2)
+    print("y: ", y)
     action = Action(X.shape[1])
     env = SRTree(X, y, action_space=action, max_depth=3, loss="dynamic")
 
